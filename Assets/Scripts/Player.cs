@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Player : SingletoneMonobehaviour<Player>
 {
-    void Start()
-    {
-        
-    }
+    private Cup cup;
 
-    void Update()
-    {
-        
-    }
+    public Cup Cup { get { return cup; } set { cup = value; } }
 }

@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 1314091565}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &133178437
 GameObject:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 1711145472}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &138314197
 GameObject:
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 407561732}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &503961373
 GameObject:
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 2098153079}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &599837870
 GameObject:
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 746529492}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &653432770
 GameObject:
@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 769845227}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &684142434
 GameObject:
@@ -2164,7 +2164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 1589993220}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 723886607}
 --- !u!1 &746529490
 GameObject:
@@ -2790,7 +2790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 1404278076}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 1866457256}
 --- !u!1 &1013505812
 GameObject:
@@ -2922,7 +2922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 233602705}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &1116923363
 GameObject:
@@ -3140,7 +3140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 714551925}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &1253561684
 GameObject:
@@ -4913,7 +4913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 2119536466}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &1859694667
 GameObject:
@@ -5125,7 +5125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 280197344}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &1980962594
 GameObject:
@@ -5171,7 +5171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 710958511}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &2003642843
 GameObject:
@@ -5217,7 +5217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd984bdb514de4aafd405b71b2cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayerButton: {fileID: 1525831907}
+  PlaceButton: {fileID: 0}
   destinationPoint: {fileID: 0}
 --- !u!1 &2030377358
 GameObject:
