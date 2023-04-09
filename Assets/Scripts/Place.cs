@@ -5,27 +5,18 @@ using UnityEngine.UI;
 
 public class Place : MonoBehaviour
 {
-    [SerializeField] private Button PlaceButton;
-    [SerializeField] private Transform destinationPoint;
-    
     private Cup cup;
     private Player player;
+    private Button placeButton;
 
     void Start()
     {
-        if(destinationPoint == null)
-        {
-            destinationPoint = transform;
-        }
+        placeButton = GetComponent<MovePlayer>().PlaceButton;
         player = Player.Instance.GetComponent<Player>();
-        PlaceButton.onClick.AddListener(MovingPlayer);
-        PlaceButton.onClick.AddListener(PutCupOnTable);
+        placeButton.onClick.AddListener(PutCupOnTable);
     }
 
-    private void MovingPlayer()
-    {
-        player.transform.position = destinationPoint.position;
-    }
+    
 
     private void PutCupOnTable()
     {
@@ -42,8 +33,8 @@ public class Place : MonoBehaviour
         cup = player.Cup;
         player.Cup = null;
 
-        PlaceButton.onClick.AddListener(TakenCupFromTable);
-        PlaceButton.onClick.RemoveListener(PutCupOnTable);
+        placeButton.onClick.AddListener(TakenCupFromTable);
+        placeButton.onClick.RemoveListener(PutCupOnTable);
 
     }
 
@@ -62,7 +53,7 @@ public class Place : MonoBehaviour
         player.Cup = cup;
         cup = null;
 
-        PlaceButton.onClick.AddListener(PutCupOnTable);
-        PlaceButton.onClick.RemoveListener(TakenCupFromTable);
+        placeButton.onClick.AddListener(PutCupOnTable);
+        placeButton.onClick.RemoveListener(TakenCupFromTable);
     }
 }
