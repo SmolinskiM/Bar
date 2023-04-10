@@ -23,5 +23,6 @@ public class BeerDispenser : MonoBehaviour
         }
 
         player.Cup.IsCupFull = true;
+        player.ChangeCup(player.Cup);
     }
 }

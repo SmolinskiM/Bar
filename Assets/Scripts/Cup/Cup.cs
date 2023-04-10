@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Cup : MonoBehaviour
 {
-    private bool isCupFull;
+    [SerializeField] private CupData cupData;
     
-    private CupData cupData;
+    private bool isCupFull;
 
+    public CupData CupData { get { return cupData; } }
     public bool IsCupFull { get { return isCupFull; } set { isCupFull = value; } }
 }

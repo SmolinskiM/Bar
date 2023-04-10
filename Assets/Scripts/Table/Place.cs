@@ -6,17 +6,18 @@ using UnityEngine.UI;
 public class Place : MonoBehaviour
 {
     private Cup cup;
+    
     private Player player;
     private Button placeButton;
+    private CupSpriteShower cupSpriteShower;
 
     void Start()
     {
+        cupSpriteShower = GetComponent<CupSpriteShower>();
         placeButton = GetComponent<MovePlayer>().PlaceButton;
         player = Player.Instance.GetComponent<Player>();
         placeButton.onClick.AddListener(PutCupOnTable);
     }
-
-    
 
     private void PutCupOnTable()
     {
@@ -31,11 +32,11 @@ public class Place : MonoBehaviour
         }
 
         cup = player.Cup;
-        player.Cup = null;
+        player.ChangeCup(null);
 
         placeButton.onClick.AddListener(TakenCupFromTable);
         placeButton.onClick.RemoveListener(PutCupOnTable);
-
+        cupSpriteShower.ChangeCupSprite(cup);
     }
 
     private void TakenCupFromTable()
@@ -50,10 +51,11 @@ public class Place : MonoBehaviour
             return;
         }
 
-        player.Cup = cup;
+        player.ChangeCup(cup);
         cup = null;
 
         placeButton.onClick.AddListener(PutCupOnTable);
         placeButton.onClick.RemoveListener(TakenCupFromTable);
+        cupSpriteShower.ChangeCupSprite(cup);
     }
 }
