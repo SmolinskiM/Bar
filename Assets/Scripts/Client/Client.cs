@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class Client : MonoBehaviour
 {
-    private float patience;
-    private float patienceLeft;
+    private bool isClientHaveCup;
 
-    private CupData order;
+    [SerializeField] private float patienceLeft;
+    private float drinkingTimeLeft;
+
+    [SerializeField] private CupData order;
+    
+    private const float PATIENCE = 10;
+    private const float DRINKING_TIME = 1;
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
 
     private void Update()
     {
-        if(patienceLeft > patience)
+        if(!isClientHaveCup)
         {
-            patienceLeft -= Time.deltaTime;
+            PatienceClient();
+        }
+        else
+        {
+            Drinking();
         }
 
-        if(patienceLeft >= 0)
-        {
-            gameObject.SetActive(false);
-        }
     }
 
-    private void CheckOrder(Cup cup)
+    private void OnEnable()
+    {
+        isClientHaveCup = false;
+        patienceLeft = PATIENCE;
+        drinkingTimeLeft = DRINKING_TIME;
+    }
+
+    public void CheckOrder(Cup cup)
     {
         if(order != cup.CupData)
         {
@@ -34,12 +51,41 @@ public class Client : MonoBehaviour
             return;
         }
 
-        //Waiting time + money 
-        gameObject.SetActive(false);
+        isClientHaveCup = true;
     }
 
-    private void SetOrder(CupData cupData)
+    public void SetOrder(CupData cupData)
     {
         order = cupData;
+    }
+
+    private void PayMoney(int score)
+    {
+        Player.Instance.Score += (int)(score * (patienceLeft / PATIENCE));
+    }
+
+    private void PatienceClient()
+    {
+        if (patienceLeft > 0)
+        {
+            patienceLeft -= Time.deltaTime;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void Drinking()
+    {
+        if (drinkingTimeLeft > 0)
+        {
+            patienceLeft -= Time.deltaTime;
+        }
+        else
+        {
+            PayMoney(order.Value);
+            gameObject.SetActive(false);
+        }
     }
 }

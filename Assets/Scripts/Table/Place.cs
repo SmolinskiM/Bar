@@ -5,23 +5,27 @@ using UnityEngine.UI;
 
 public class Place : MonoBehaviour
 {
-    private Cup cup;
+    [SerializeField] private Transform pointForCup;
     
-    private Player player;
-    private Button placeButton;
-    private CupSpriteShower cupSpriteShower;
+    private InputDetector inputDetector;
+    private PlayerMover playerMover;
+
+    //Wait to change
+    [SerializeField] private Cup cup;
+
+    public InputDetector InputDetector { get { return inputDetector; } set { inputDetector = value; } }
 
     void Start()
     {
-        cupSpriteShower = GetComponent<CupSpriteShower>();
-        placeButton = GetComponent<MovePlayer>().PlaceButton;
-        player = Player.Instance.GetComponent<Player>();
-        placeButton.onClick.AddListener(PutCupOnTable);
+        playerMover = GetComponent<PlayerMover>();
+
+        inputDetector.onClickEvent += PutCupOnTable;
+        inputDetector.onClickEvent += playerMover.MovingPlayer;
     }
 
     private void PutCupOnTable()
     {
-        if (player.Cup == null)
+        if (Player.Instance.Cup == null)
         {
             return;
         }
@@ -31,17 +35,17 @@ public class Place : MonoBehaviour
             return;
         }
 
-        cup = player.Cup;
-        player.ChangeCup(null);
+        cup = Player.Instance.Cup;
+        Player.Instance.ChangeCup(null);
 
-        placeButton.onClick.AddListener(TakenCupFromTable);
-        placeButton.onClick.RemoveListener(PutCupOnTable);
-        cupSpriteShower.ChangeCupSprite(cup);
+        inputDetector.onClickEvent += TakenCupFromTable;
+        inputDetector.onClickEvent -= PutCupOnTable;
+        cup.MoveCup(pointForCup);
     }
 
     private void TakenCupFromTable()
     {
-        if (player.Cup != null)
+        if (Player.Instance.Cup != null)
         {
             return;
         }
@@ -51,11 +55,11 @@ public class Place : MonoBehaviour
             return;
         }
 
-        player.ChangeCup(cup);
+        Player.Instance.ChangeCup(cup);
+        cup.MoveCup(Player.Instance.transform);
         cup = null;
 
-        placeButton.onClick.AddListener(PutCupOnTable);
-        placeButton.onClick.RemoveListener(TakenCupFromTable);
-        cupSpriteShower.ChangeCupSprite(cup);
+        inputDetector.onClickEvent += PutCupOnTable;
+        inputDetector.onClickEvent -= TakenCupFromTable;
     }
 }

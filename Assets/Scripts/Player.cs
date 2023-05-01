@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Player : SingletoneMonobehaviour<Player>
 {
-    [SerializeField] private Cup cup;
-    private CupSpriteShower cupSpriteShower;
+    private Cup cup;
 
+    private int score;
+
+    public int Score { get { return score; } set { score = value; } }
     public Cup Cup { get { return cup; }}
-
-    private void Start()
-    {
-        cupSpriteShower = GetComponent<CupSpriteShower>();
-    }
 
     public void ChangeCup(Cup cup = null)
     {
         this.cup = cup;
-        cupSpriteShower.ChangeCupSprite(cup);
-
     }
 }

@@ -1,28 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BeerDispenser : MonoBehaviour
 {
-    private Button beerDispenserButton;
-    private Player player;
+    [SerializeField] private InputDetector inputDetector;
 
     private void Start()
     {
-        beerDispenserButton = GetComponent<MovePlayer>().PlaceButton;
-        player = Player.Instance.GetComponent<Player>();
-        beerDispenserButton.onClick.AddListener(CompleteCup);
+        inputDetector.onClickEvent += CompleteCup;
     }
 
     private void CompleteCup()
     {
-        if(player.Cup == null)
+        Player player = Player.Instance;
+
+        if (player.Cup == null)
         {
             return;
         }
 
         player.Cup.IsCupFull = true;
-        player.ChangeCup(player.Cup);
+        player.Cup.ChangeSprite(player.Cup.CupData.CupSprite);
     }
 }
