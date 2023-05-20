@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointForCup: {fileID: 5227538902357030854}
-  cup: {fileID: 0}
+  inputDetector: {fileID: 732694001907461673}
+  client: {fileID: 6382134759760712686}
 --- !u!114 &7225836610717547922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointForCup: {fileID: 2507032272075340257}
-  cup: {fileID: 0}
+  inputDetector: {fileID: 8151042247604086678}
+  client: {fileID: 5512037299267348129}
 --- !u!114 &1154384017352435643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +169,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2190802140502160248}
   - component: {fileID: 2190802140502160249}
-  - component: {fileID: 1417913700665533960}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -246,22 +247,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1417913700665533960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2190802140502160254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7568645dd40ba5a42a94bdbf87f69712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputDetectorLeft: {fileID: 8151042247604086678}
-  InputDetectorRight: {fileID: 732694001907461673}
-  placeLeft: {fileID: 2190802139621228985}
-  placeRight: {fileID: 2190802138871487021}
 --- !u!1 &4531833070199871206
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +605,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7028177517602736685, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028177517602736685, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
 --- !u!4 &4654335341211722722 stripped
@@ -627,6 +620,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3275316981433844564, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
   m_PrefabInstance: {fileID: 7918390435072172214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6382134759760712686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3851180100819497816, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
+  m_PrefabInstance: {fileID: 7918390435072172214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0b03d306fd271408e8afdc2dd03da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8722508608248387065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -702,8 +706,27 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7028177517602736685, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028177517602736685, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
+--- !u!114 &5512037299267348129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3851180100819497816, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}
+  m_PrefabInstance: {fileID: 8722508608248387065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0b03d306fd271408e8afdc2dd03da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6086843790193448621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3275316981433844564, guid: bb264a871efe85541b490c5deb2ebc94, type: 3}

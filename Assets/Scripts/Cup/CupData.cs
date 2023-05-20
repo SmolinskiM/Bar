@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Cup", menuName = "Cup")]
 public class CupData : ScriptableObject
 {
     [SerializeField] private int value;
-    
+
     [SerializeField] private Sprite cupSprite;
     [SerializeField] private Sprite cupSpriteEmpty;
     [SerializeField] private CupType cupType;

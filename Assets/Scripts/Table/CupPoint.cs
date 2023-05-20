@@ -1,23 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CupPoint : MonoBehaviour
 {
-    [SerializeField] private Transform[] cupPoints;
+    [SerializeField] private CupSlot[] cupSlots;
 
     [SerializeField] private InputDetector inputDetector;
 
     [SerializeField] private CupData cupData;
 
-    private void Start()
+    [SerializeField] private SpriteRenderer plateSprite;
+
+    private void Awake()
     {
-        inputDetector.onClickEvent += DecidingWhatToDoWithCup;
+        inputDetector.onClickEvent += OnCupPointClicked;
     }
 
-    private void DecidingWhatToDoWithCup()
+    private void Start()
     {
-        if(Player.Instance.Cup != null)
+        plateSprite.sprite = cupData.CupSprite;
+    }
+
+    private void OnCupPointClicked()
+    {
+        if (Player.Instance.Cup != null)
         {
             PutCup();
         }
@@ -29,13 +34,13 @@ public class CupPoint : MonoBehaviour
 
     private void TakeCup()
     {
-        foreach(Transform cupPoint in cupPoints)
+        foreach (CupSlot cupSlot in cupSlots)
         {
-            if(cupPoint.childCount != 0)
+            if (cupSlot.Cup != null)
             {
-                Cup cup = cupPoint.GetComponentInChildren<Cup>();
-                cup.MoveCup(Player.Instance.transform);
-                Player.Instance.ChangeCup(cup);
+                cupSlot.Cup.MoveCup(Player.Instance.transform);
+                Player.Instance.Cup = cupSlot.Cup;
+                cupSlot.Cup = null;
                 return;
             }
         }
@@ -43,17 +48,18 @@ public class CupPoint : MonoBehaviour
 
     private void PutCup()
     {
-        if(Player.Instance.Cup.CupData != cupData)
+        if (Player.Instance.Cup.CupData != cupData)
         {
             return;
         }
 
-        foreach (Transform cupPoint in cupPoints)
+        foreach (CupSlot cupSlot in cupSlots)
         {
-            if (cupPoint.childCount == 0)
+            if (cupSlot.Cup == null)
             {
-                Player.Instance.Cup.MoveCup(cupPoint);
-                Player.Instance.ChangeCup();
+                Player.Instance.Cup.MoveCup(cupSlot.transform);
+                cupSlot.Cup = Player.Instance.Cup;
+                Player.Instance.Cup = null;
                 return;
             }
         }

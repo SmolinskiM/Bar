@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Client : MonoBehaviour
 {
-    private bool isClientHaveCup;
+    [SerializeField] private float patienceTimeLeft;
 
-    [SerializeField] private float patienceLeft;
+    private bool isClientDrinking;
+
     private float drinkingTimeLeft;
 
     [SerializeField] private CupData order;
-    
-    private const float PATIENCE = 10;
+
+    private const float PATIENCE_TIME = 10;
     private const float DRINKING_TIME = 1;
+
+    public bool IsClientDrinking { get { return isClientDrinking; } }
+    public float PatienceTimeLeft { get { return patienceTimeLeft; } }
+    public float DrinkingTimeLeft { get { return drinkingTimeLeft; } }
+    public float PatienceTime { get { return PATIENCE_TIME; } }
+    public float DrinkingTime { get { return DRINKING_TIME; } }
+    public CupData Order { get { return order; } }
 
     private void Start()
     {
@@ -21,7 +27,7 @@ public class Client : MonoBehaviour
 
     private void Update()
     {
-        if(!isClientHaveCup)
+        if (!isClientDrinking)
         {
             PatienceClient();
         }
@@ -29,29 +35,29 @@ public class Client : MonoBehaviour
         {
             Drinking();
         }
-
     }
 
     private void OnEnable()
     {
-        isClientHaveCup = false;
-        patienceLeft = PATIENCE;
+        patienceTimeLeft = PATIENCE_TIME;
         drinkingTimeLeft = DRINKING_TIME;
     }
 
     public void CheckOrder(Cup cup)
     {
-        if(order != cup.CupData)
-        {
-            return;
-        }
-        
-        if(!cup.IsCupFull)
+        if (order != cup.CupData)
         {
             return;
         }
 
-        isClientHaveCup = true;
+        if (!cup.IsCupFull)
+        {
+            return;
+        }
+
+        isClientDrinking = true;
+        cup.IsCupFull = false;
+        cup.ChangeSprite(cup.CupData.CupSpriteEmpty);
     }
 
     public void SetOrder(CupData cupData)
@@ -61,14 +67,14 @@ public class Client : MonoBehaviour
 
     private void PayMoney(int score)
     {
-        Player.Instance.Score += (int)(score * (patienceLeft / PATIENCE));
+        Player.Instance.Score += (int)(score * (patienceTimeLeft / PATIENCE_TIME));
     }
 
     private void PatienceClient()
     {
-        if (patienceLeft > 0)
+        if (patienceTimeLeft > 0)
         {
-            patienceLeft -= Time.deltaTime;
+            patienceTimeLeft -= Time.deltaTime;
         }
         else
         {
@@ -80,11 +86,12 @@ public class Client : MonoBehaviour
     {
         if (drinkingTimeLeft > 0)
         {
-            patienceLeft -= Time.deltaTime;
+            drinkingTimeLeft -= Time.deltaTime;
         }
         else
         {
             PayMoney(order.Value);
+            isClientDrinking = false;
             gameObject.SetActive(false);
         }
     }

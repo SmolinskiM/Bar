@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Cup : MonoBehaviour
 {
     [SerializeField] private CupData cupData;
     private SpriteRenderer spriteRenderer;
-    
+
     private bool isCupFull;
 
     public CupData CupData { get { return cupData; } }
@@ -14,14 +12,14 @@ public class Cup : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>(); 
+        spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = cupData.CupSpriteEmpty;
     }
 
     public void MoveCup(Transform destinationPoint)
     {
         transform.SetParent(destinationPoint);
-        transform.position = destinationPoint.position;
+        transform.position = new Vector3(destinationPoint.position.x, destinationPoint.position.y, -0.2f);
     }
 
     public void ChangeSprite(Sprite cupSprite)

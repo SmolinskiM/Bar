@@ -1,19 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Place : MonoBehaviour
 {
     [SerializeField] private Transform pointForCup;
-    
-    private InputDetector inputDetector;
+    [SerializeField] private InputDetector inputDetector;
+    [SerializeField] private Client client;
+
+    private Cup cup;
     private PlayerMover playerMover;
-
-    //Wait to change
-    [SerializeField] private Cup cup;
-
-    public InputDetector InputDetector { get { return inputDetector; } set { inputDetector = value; } }
 
     void Start()
     {
@@ -30,13 +24,18 @@ public class Place : MonoBehaviour
             return;
         }
 
-        if(cup != null)
+        if (cup != null)
         {
             return;
         }
 
         cup = Player.Instance.Cup;
-        Player.Instance.ChangeCup(null);
+        Player.Instance.Cup = null;
+
+        if (client.gameObject.activeSelf)
+        {
+            client.CheckOrder(cup);
+        }
 
         inputDetector.onClickEvent += TakenCupFromTable;
         inputDetector.onClickEvent -= PutCupOnTable;
@@ -55,7 +54,12 @@ public class Place : MonoBehaviour
             return;
         }
 
-        Player.Instance.ChangeCup(cup);
+        if (client.IsClientDrinking)
+        {
+            return;
+        }
+
+        Player.Instance.Cup = cup;
         cup.MoveCup(Player.Instance.transform);
         cup = null;
 
