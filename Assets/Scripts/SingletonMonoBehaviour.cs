@@ -28,7 +28,7 @@ public class SingletoneMonobehaviour<T> : MonoBehaviour where T : MonoBehaviour
             instance = this as T;
             DontDestroyOnLoad(this.gameObject);
         }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
         }

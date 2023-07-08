@@ -7,13 +7,12 @@ public class Cup : MonoBehaviour
 
     private bool isCupFull;
 
-    public CupData CupData { get { return cupData; } }
+    public CupData CupData { get { return cupData; } set { cupData = value; } }
     public bool IsCupFull { get { return isCupFull; } set { isCupFull = value; } }
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = cupData.CupSpriteEmpty;
     }
 
     public void MoveCup(Transform destinationPoint)

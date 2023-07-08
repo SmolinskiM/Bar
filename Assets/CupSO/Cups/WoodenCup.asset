@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8095d34926cf76a43b4e195e425f24de, type: 3}
   m_Name: WoodenCup
   m_EditorClassIdentifier: 
-  value: 0
+  value: 10
   cupSprite: {fileID: 21300000, guid: 36e9e2e5d20ace84392733dd0f940975, type: 3}
   cupSpriteEmpty: {fileID: 21300000, guid: 24d4e78e598125f49aed11edc4bff7f6, type: 3}
   cupType: 0

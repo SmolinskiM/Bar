@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Client : MonoBehaviour
 {
-    [SerializeField] private float patienceTimeLeft;
+    [SerializeField] private CupData order;
+
+    private float patienceTimeLeft;
 
     private bool isClientDrinking;
 
     private float drinkingTimeLeft;
 
-    [SerializeField] private CupData order;
 
     private const float PATIENCE_TIME = 10;
     private const float DRINKING_TIME = 1;
@@ -20,7 +21,7 @@ public class Client : MonoBehaviour
     public float DrinkingTime { get { return DRINKING_TIME; } }
     public CupData Order { get { return order; } }
 
-    private void Start()
+    private void Awake()
     {
         gameObject.SetActive(false);
     }
@@ -67,7 +68,7 @@ public class Client : MonoBehaviour
 
     private void PayMoney(int score)
     {
-        Player.Instance.Score += (int)(score * (patienceTimeLeft / PATIENCE_TIME));
+        Player.Instance.AddMoney((int)(score * (patienceTimeLeft / PATIENCE_TIME)));
     }
 
     private void PatienceClient()
@@ -78,6 +79,7 @@ public class Client : MonoBehaviour
         }
         else
         {
+            Player.Instance.LostHeart();
             gameObject.SetActive(false);
         }
     }

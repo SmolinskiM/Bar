@@ -6,17 +6,21 @@ public class CupPoint : MonoBehaviour
 
     [SerializeField] private InputDetector inputDetector;
 
-    [SerializeField] private CupData cupData;
-
     [SerializeField] private SpriteRenderer plateSprite;
 
-    private void Awake()
-    {
-        inputDetector.onClickEvent += OnCupPointClicked;
-    }
+    private CupData cupData;
+
+    public CupData CupData { get { return cupData; } set { cupData = value; } }
 
     private void Start()
     {
+        inputDetector.onClickEvent += OnCupPointClicked;
+
+        foreach (CupSlot cupSlot in cupSlots)
+        {
+            cupSlot.Cup.CupData = cupData;
+            cupSlot.Cup.ChangeSprite(cupData.CupSpriteEmpty);
+        }
         plateSprite.sprite = cupData.CupSprite;
     }
 

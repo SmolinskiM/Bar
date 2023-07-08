@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8095d34926cf76a43b4e195e425f24de, type: 3}
-  m_Name: StoneCup
+  m_Name: StarCup
   m_EditorClassIdentifier: 
-  value: 0
-  cupSprite: {fileID: 21300000, guid: 177b947cff81fe04098ae601e5442995, type: 3}
-  cupSpriteEmpty: {fileID: 21300000, guid: 0777c908442dc364fa3a093d7602a7df, type: 3}
-  cupType: 1
+  value: 10
+  cupSprite: {fileID: 21300000, guid: c7d217ac7b2a70e4bbbd17ffe2c8645a, type: 3}
+  cupSpriteEmpty: {fileID: 21300000, guid: bc7edec9aeeb1cc44b2d55c689992fe9, type: 3}
+  cupType: 7

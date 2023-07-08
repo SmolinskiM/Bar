@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8095d34926cf76a43b4e195e425f24de, type: 3}
-  m_Name: SkullCup
+  m_Name: SilverCup
   m_EditorClassIdentifier: 
-  value: 0
-  cupSprite: {fileID: 21300000, guid: b74d491773ffeb346a0d89892c159049, type: 3}
-  cupSpriteEmpty: {fileID: 21300000, guid: 1769f41f58375cc46bf0484ad1b1cf89, type: 3}
-  cupType: 6
+  value: 10
+  cupSprite: {fileID: 21300000, guid: 7e1e5c9713c209e43bc5f37f577fc0af, type: 3}
+  cupSpriteEmpty: {fileID: 21300000, guid: 206d0929cd5762242a89a336171937d9, type: 3}
+  cupType: 3

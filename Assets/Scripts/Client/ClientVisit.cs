@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class ClientVisit : MonoBehaviour
 {
-    [SerializeField] private CupData[] cupDatas;
+    [SerializeField] private float timeToVisitClientLeft = 1;
+
+    [SerializeField] private Client[] clients;
 
     private float timeToVisitClient = 7;
-    private float timeToVisitClientLeft = 1;
 
-    private Client[] clients;
+    private GameMeneger gameMeneger;
 
     private void Awake()
     {
-        clients = FindObjectsOfType<Client>();
+        gameMeneger = GetComponent<GameMeneger>();
     }
 
     private void Update()
@@ -32,8 +33,8 @@ public class ClientVisit : MonoBehaviour
         {
             if (!client.gameObject.activeSelf)
             {
-                int cupDataRandom = Random.Range(0, cupDatas.Length);
-                client.SetOrder(cupDatas[cupDataRandom]);
+                int cupDataRandom = Random.Range(0, gameMeneger.SurvivalMode.CupDatas.Length);
+                client.SetOrder(gameMeneger.SurvivalMode.CupDatas[cupDataRandom]);
                 timeToVisitClientLeft = timeToVisitClient;
                 timeToVisitClient -= 0.1f;
                 client.gameObject.SetActive(true);

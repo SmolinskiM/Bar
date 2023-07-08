@@ -4,7 +4,7 @@ public class CupSlot : MonoBehaviour
 {
     public Cup Cup { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         Cup = GetComponentInChildren<Cup>();
     }
